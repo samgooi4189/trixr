@@ -1,5 +1,10 @@
 Tasks = new Mongo.Collection("tasks");
 
+//======================
+// Client
+//
+//======================
+
 if (Meteor.isClient) {
 
   Meteor.subscribe("tasks");
@@ -65,6 +70,11 @@ if (Meteor.isClient) {
   });
 }
 
+//======================
+// Meteor methods
+//
+//======================
+
 Meteor.methods({
   addTask: function (text) {
     //Make sure the user is logged in before inserting a task
@@ -106,6 +116,11 @@ Meteor.methods({
     Tasks.update(taskId, { $set: {private: setToPrivate }});
   }
 });
+
+//======================
+// Server
+//
+//======================
 
 if (Meteor.isServer) {
   // code to run on server at startup
